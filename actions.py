@@ -3,7 +3,7 @@ from typing import List, Tuple
 import config
 import human
 
-
+print ("hola")
 def move(level: List[List[int]],
          character: dict,
          direction: str):
