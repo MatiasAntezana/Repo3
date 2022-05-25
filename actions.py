@@ -1,48 +1,61 @@
-from typing import List, Tuple
+from typing import Union
 
-import config
-import human
 
-print ("hola")
-def move(level: List[List[int]],
-         character: dict,
-         direction: str):
-    """
-    Mueve una entidad de una ubicación dada a la ubicación adecuada según el nivel del juego y el equipo para el
-    personaje.
+import mapping
+import player
 
-    :param level: Piso de juego en el que se mueve el personaje.
-    :param character: Diccionario que representa el carácter.
-    :param dirección: comando ARRIBA, ABAJO, IZQUIERDA o DERECHA (configurado en caracteres.py)
 
-    :return: Tupla con coordenadas donde el personaje se movería en la dirección dada
-    sin contar enemigos ni peligros.
-    Aún así, moverse hacia las paredes hace que los personajes sin PICK se paren y no se muevan.
-    """
+numeric = Union[int, float]
+
+
+def clip(value: numeric, minimum: numeric, maximum: numeric) -> numeric:
+    if value < minimum:
+        return minimum
+    if value > maximum:
+        return maximum
+    return value
+
+
+def attack(dungeon, player): # completar
     # completar
     raise NotImplementedError
 
 
-def move_to(level: List[List[int]], entity: dict, location: Tuple[int, int]):
+def move_to(dungeon: mapping.Dungeon, player: player.Player, location: tuple[numeric, numeric]):
     # completar
     raise NotImplementedError
 
 
-def move_up(level: List[List[int]], entity: dict):
+def move_up(dungeon: mapping.Dungeon, player: player.Player):
     # completar
     raise NotImplementedError
 
 
-def move_left(level: List[List[int]], entity: dict):
+def move_down(dungeon: mapping.Dungeon, player: player.Player):
     # completar
     raise NotImplementedError
 
 
-def move_down(level: List[List[int]], entity: dict):
+def move_left(dungeon: mapping.Dungeon, player: player.Player):
     # completar
     raise NotImplementedError
 
 
-def move_right(level: List[List[int]], entity: dict):
+def move_right(dungeon: mapping.Dungeon, player: player.Player):
+    # completar
+    raise NotImplementedError
+
+
+def climb_stair(dungeon: mapping.Dungeon, player: player.Player):
+    # completar
+    raise NotImplementedError
+
+
+def descend_stair(dungeon: mapping.Dungeon, player: player.Player):
+    # completar
+    raise NotImplementedError
+
+
+def pickup(dungeon: mapping.Dungeon, player: player.Player):
     # completar
     raise NotImplementedError

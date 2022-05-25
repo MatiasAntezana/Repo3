@@ -1,36 +1,43 @@
-import human
-import items
+#!/usr/bin/env python3
+import time
+import mapping
+import magic
+
+import random
+from human import Human
+from items import Item
+from gnome import Gnome
 import actions
 
-import mapping
-import config
-from getch import getch
-import random as rnd
 
-#%%
-if __name__ == '__main__':
+ROWS = 25
+COLUMNS = 80
+
+
+
+if __name__ == "__main__":
     # initial parameters
     level = 0
-    player = "matias"
+    player = Human("player", (50,20), "@" , hitpoints = 150)
+    """(a,b), el a será la columna y el b la fila"""
 
-    # las ubicaciones iniciales pueden generarse aleatoriamente
-    gnomes = "hola"
+    # initial locations may be random generated
+    gnome = Gnome("gnome", (30,20), "G" , hitpoints = 150)
 
-    dungeon = mapping.dungeon(config.ROWS, config.COLUMNS, 3)
+    dungeon = mapping.Dungeon(ROWS, COLUMNS, 3)
     # Agregarle cosas al dungeon, cosas que no se creen automáticamente al crearlo (por ejemplo, ya se crearon las escaleras).
 
-    # game loop
-    key = None
     turns = 0
-    while cmd != config.EXIT and level >= 0:
+    while dungeon.level >= 0:
         turns += 1
         # render map
-        mapping.render()
-
+        dungeon.render(player, gnome)
+        hit = input ()
         # read key
-        key = getch()
+        key = magic.read_single_keypress()
 
         # Hacer algo con keys:
         # move player and/or gnomes
 
     # Salió del loop principal, termina el juego
+        
